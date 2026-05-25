@@ -1,0 +1,24 @@
+body { font-family: sans-serif; margin: 0; color: #333; }
+header { background: #222; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+header h1 span { color: #FF8C00; } /* Naranja distintivo */
+
+.hero { 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    height: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.btn { 
+    background-color: #FF8C00; /* Naranja */
+    color: white; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    font-weight: bold;
+}
