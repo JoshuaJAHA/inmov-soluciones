@@ -1,28 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INMOV SOLUCIONES | Bienes Raíces</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INMOV Soluciones | Inmobiliaria en CDMX — Servicio 360°</title>
+<meta name="description" content="INMOV Soluciones: compra, venta, renta, asesoría legal y trámites inmobiliarios en Ciudad de México. Servicio 360° recomendado por el 100% de nuestros clientes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>INMOV <span>SOLUCIONES</span></h1>
-        <nav>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <h2>Tu próximo hogar empieza aquí.</h2>
-        <p>Soluciones inmobiliarias a tu medida.</p>
-        <a href="https://wa.me/tu-numero" class="btn">Contáctanos por WhatsApp</a>
-    </section>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <a href="#inicio" class="brand">INMOV <span>SOLUCIONES</span></a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+    </button>
+    <nav class="primary-nav">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#propiedades">Propiedades</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://wa.me/525635919360" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp</a>
+    </nav>
+  </header>
 
-    <section id="contacto">
-        <h3>Información de Contacto</h3>
-        <p>Expertos en el sector inmobiliario.</p>
-    </section>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="inicio">
+    <div class="hero-photo" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80')">
+      <div class="sunbeam"></div>
+    </div>
+    <div class="hero-panel hero-panel--left"></div>
+    <div class="hero-panel hero-panel--right"></div>
+
+    <div class="hero-content">
+      <span class="eyebrow">Inmobiliaria · Ciudad de México</span>
+      <h2>Tu próximo hogar empieza aquí.</h2>
+      <p>Acompañamiento integral en compra, venta y renta de propiedades — con la claridad y el seguimiento que un proceso así merece.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/525635919360" target="_blank" rel="noopener" class="btn btn-primary">
+          Contáctanos por WhatsApp
+        </a>
+        <a href="propiedades.html" class="btn btn-outline-light">Ver propiedades</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll"><span>Desliza</span><span class="line"></span></div>
+  </section>
+
+  <!-- ================= NOSOTROS / STATS ================= -->
+  <section id="nosotros">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nosotros</span>
+        <h3>Un servicio 360°, de principio a fin.</h3>
+        <p>Somos una empresa especializada en el ramo inmobiliario en la Ciudad de México. Acompañamos cada paso del proceso — desde la búsqueda hasta la firma — con información clara y asesoría real.</p>
+      </div>
+
+      <div class="stats reveal reveal-stagger">
+        <div class="stat" style="--i:0">
+          <div class="num" data-target="100" data-suffix="%">0%</div>
+          <div class="label">Recomendado por clientes</div>
+        </div>
+        <div class="stat" style="--i:1">
+          <div class="num" data-target="11" data-suffix="">0</div>
+          <div class="label">Opiniones en Facebook</div>
+        </div>
+        <div class="stat" style="--i:2">
+          <div class="num" data-target="360" data-suffix="°">0°</div>
+          <div class="label">Servicio integral</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICIOS ================= -->
+  <section class="servicios" id="servicios">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Servicios</span>
+        <h3>Todo lo que necesitas, en un solo lugar.</h3>
+        <p>Sea que quieras comprar, vender o rentar, en INMOV Soluciones te acompañamos con la parte legal, los trámites y el seguimiento hasta el final.</p>
+      </div>
+    </div>
+
+    <div class="servicios-grid reveal reveal-stagger">
+      <article class="servicio-card" style="--i:0">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5h14V10"/><path d="M10 19.5v-6h4v6"/></svg>
+        <h4>Compra</h4>
+        <p>Te ayudamos a encontrar la propiedad que se ajusta a lo que buscas, con opciones verificadas.</p>
+      </article>
+      <article class="servicio-card" style="--i:1">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg>
+        <h4>Venta</h4>
+        <p>Estrategia de valuación y difusión para vender tu propiedad en el mejor tiempo y precio.</p>
+      </article>
+      <article class="servicio-card" style="--i:2">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10h16"/></svg>
+        <h4>Renta</h4>
+        <p>Administración y colocación de inmuebles en renta, con contratos claros para ambas partes.</p>
+      </article>
+      <article class="servicio-card" style="--i:3">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 4 7v6c0 5 3.5 7.5 8 8 4.5-.5 8-3 8-8V7z"/></svg>
+        <h4>Asesoría legal y notarial</h4>
+        <p>Revisión de documentos, contratos y coordinación con notaría para que todo quede en regla.</p>
+      </article>
+      <article class="servicio-card" style="--i:4">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v3h3"/><path d="M9 12h6M9 16h6"/></svg>
+        <h4>Trámites y gestoría</h4>
+        <p>Gestión de escrituras, avalúos y trámites ante instituciones, para que no pierdas tiempo.</p>
+      </article>
+      <article class="servicio-card" style="--i:5">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c1-3.5 4-5.5 7-5.5s6 2 7 5.5"/></svg>
+        <h4>Acompañamiento</h4>
+        <p>Seguimiento cercano durante todo el proceso, con paciencia para resolver cada duda.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= PROPIEDADES (preview) ================= -->
+  <section class="propiedades-preview" id="propiedades">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Propiedades</span>
+        <h3>Nuestro catálogo, muy pronto.</h3>
+        <p>Estamos preparando la lista de propiedades disponibles. Mientras tanto, escríbenos y te compartimos las opciones vigentes directamente.</p>
+      </div>
+
+      <div class="skeleton-grid reveal reveal-stagger">
+        <div class="skeleton-card" style="--i:0"><div class="skeleton-photo"></div><div class="skeleton-lines"><div class="skeleton-line"></div><div class="skeleton-line short"></div></div></div>
+        <div class="skeleton-card" style="--i:1"><div class="skeleton-photo"></div><div class="skeleton-lines"><div class="skeleton-line"></div><div class="skeleton-line short"></div></div></div>
+        <div class="skeleton-card" style="--i:2"><div class="skeleton-photo"></div><div class="skeleton-lines"><div class="skeleton-line"></div><div class="skeleton-line short"></div></div></div>
+      </div>
+
+      <p class="preview-note reveal">¿Buscas algo en particular? <a href="propiedades.html">Ver la sección completa de propiedades →</a></p>
+    </div>
+  </section>
+
+  <!-- ================= OPINIONES ================= -->
+  <section id="opiniones">
+    <div class="container">
+      <div class="opiniones-head reveal">
+        <div class="section-head" style="margin-bottom:0">
+          <span class="eyebrow">Opiniones</span>
+          <h3>Lo que dicen quienes ya confiaron en nosotros.</h3>
+        </div>
+        <div class="rec-badge"><strong>100%</strong> recomendado · 11 opiniones en Facebook</div>
+      </div>
+
+      <div class="carousel reveal">
+        <div class="carousel-track"><!-- se llena por JS desde data.js --></div>
+      </div>
+      <div class="carousel-controls reveal">
+        <button class="carousel-prev" aria-label="Testimonio anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-next" aria-label="Siguiente testimonio">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Contacto</span>
+        <h3>Hablemos de tu próximo paso.</h3>
+        <p>Escríbenos por WhatsApp, correo o pasa directo a la oficina — con gusto te atendemos.</p>
+      </div>
+
+      <div class="contacto-grid reveal">
+        <ul class="contacto-list">
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-6.2-7-11.4A7 7 0 0 1 12 2.6a7 7 0 0 1 7 6.9C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.4" r="2.3"/></svg>
+            <div>
+              <span class="label">Oficina</span>
+              Blvd. Picacho-Ajusco 545, Lomas de Padierna,<br>Ciudad de México, México
+            </div>
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v14H4z"/><path d="m4 6 8 7 8-7"/></svg>
+            <div>
+              <span class="label">Correo</span>
+              <a href="mailto:oficina@inmovsoluciones.com">oficina@inmovsoluciones.com</a>
+            </div>
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.6 21 3 12.4 3 2c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z"/></svg>
+            <div>
+              <span class="label">Teléfono</span>
+              <a href="tel:+525635919360">56 3591 9360</a>
+            </div>
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <div>
+              <span class="label">Horario</span>
+              <!-- TODO: confirma el horario real de atención y actualízalo aquí -->
+              Lunes a viernes · 9:00–18:00 h
+            </div>
+          </li>
+        </ul>
+
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=Blvd.+Picacho-Ajusco+545,+Lomas+de+Padierna,+Ciudad+de+M%C3%A9xico&output=embed"
+            title="Ubicación de INMOV Soluciones"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span data-year>2026</span> INMOV Soluciones. Todos los derechos reservados.</span>
+      <a href="https://www.facebook.com/inmovsoluciones" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Volver arriba">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
