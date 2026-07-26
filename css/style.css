@@ -4,7 +4,7 @@
    limpia — referencia libre a la arquitectura mexicana (Barragán).
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&family=Oswald:wght@500;700&display=swap');
 
 :root{
   --bg:            #F3ECDD;
@@ -107,25 +107,34 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 }
 
 .brand{
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: .01em;
   text-decoration: none;
   color: var(--ink);
   display: flex;
-  align-items: baseline;
-  gap: .35em;
+  align-items: center;
+  gap: .8em;
+  transition: gap .35s var(--ease);
 }
-.brand span{ color: var(--terracotta); }
-.brand small{
-  font-family: var(--font-mono);
-  font-size: .55rem;
-  letter-spacing: .12em;
-  color: var(--ink-soft);
-  font-weight: 400;
+
+.brand-logo{
+  height: 52px;
+  width: auto;
+  transition: height .35s var(--ease);
+}
+.is-scrolled .brand-logo{ height: 40px; }
+
+.brand-text{
+  font-family: 'Oswald', var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  letter-spacing: .01em;
   text-transform: uppercase;
+  line-height: 1;
+  transform: skewX(-4deg);
+  transition: font-size .35s var(--ease);
+  white-space: nowrap;
 }
+.brand-text em{ color: var(--terracotta); font-style: normal; }
+.is-scrolled .brand-text{ font-size: clamp(1.15rem, 2vw, 1.5rem); }
 
 nav.primary-nav{
   display: flex;
@@ -660,6 +669,11 @@ footer.site-footer{
   .servicios-grid{ grid-template-columns: repeat(2, 1fr); }
   .skeleton-grid, .property-grid-placeholder{ grid-template-columns: repeat(2, 1fr); }
   .contacto-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px){
+  .brand-logo{ height: 38px; }
+  .brand-text{ font-size: 1.1rem; }
 }
 
 @media (max-width: 720px){
