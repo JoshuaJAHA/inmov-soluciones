@@ -126,6 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /* ---------- reflejo interactivo de cristal líquido ---------- */
+  const glassCards = document.querySelectorAll('.servicio-card, .stat, .testimonio-inner');
+  glassCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
   /* ---------- año actual en el footer ---------- */
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
