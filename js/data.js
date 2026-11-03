@@ -3,6 +3,94 @@
    Fuente: página oficial de Facebook de la empresa (inmovsoluciones).
    ========================================================================== */
 
+/* ==========================================================================
+   Catálogo de Propiedades Reales — INMOV Soluciones
+   ========================================================================== */
+
+const PROPIEDADES_DESTACADAS = [
+  {
+    id: "edificio-roma-norte",
+    tipoOperacion: "Venta",
+    categoria: "Edificio / Comercial",
+    categoriaFiltro: "comercial",
+    titulo: "Edificio en Venta · 7 Pisos",
+    ubicacion: "Querétaro 34, Roma Norte, CDMX",
+    zona: "Roma Norte",
+    precio: "$85,000,000 MXN",
+    precioPeriodo: "",
+    destacado: "Oportunidad de Inversión",
+    resumen: "Edificio de 7 pisos ideal para remodelar o reconvertir en departamentos residenciales, hotel boutique o corporativo en el corazón de la Roma Norte.",
+    imagen: "assets/img/propiedades/edificio-roma-norte.jpg",
+    specs: [
+      { label: "Construcción", val: "2,700 m²" },
+      { label: "Terreno", val: "370 m²" },
+      { label: "Niveles", val: "7 Pisos" }
+    ],
+    puntosClave: [
+      "Ideal para remodelar o convertir en departamentos",
+      "Ubicación privilegiada en Roma Norte",
+      "Alta plusvalía y retorno de inversión comercial"
+    ],
+    badgeTipo: "Venta",
+    whatsappMsg: "Hola,%20me%20interesa%20información%20del%20Edificio%20en%20Venta%20en%20Querétaro%2034,%20Roma%20Norte"
+  },
+  {
+    id: "depa-amueblado-polanco",
+    tipoOperacion: "Renta",
+    categoria: "Departamento Amueblado",
+    categoriaFiltro: "departamento",
+    titulo: "Departamento Amueblado · Piso 21",
+    ubicacion: "Cerca de Polanco, CDMX",
+    zona: "Polanco / Granada",
+    precio: "$80,000 MXN",
+    precioPeriodo: "/ mes",
+    destacado: "Mantenimiento Incluido",
+    resumen: "Vive con lujo y confort en una de las zonas más exclusivas. Totalmente amueblado con vista espectacular, acabados de alta gama y amenidades de primer nivel.",
+    imagen: "assets/img/propiedades/depa-amueblado-polanco.jpg",
+    specs: [
+      { label: "Construcción", val: "120 m²" },
+      { label: "Recámaras", val: "2 Rec." },
+      { label: "Baños", val: "2.5 Baños" },
+      { label: "Piso", val: "Piso 21" }
+    ],
+    puntosClave: [
+      "Totalmente amueblado con diseño contemporáneo",
+      "Amenidades: alberca, gimnasio, ludoteca y business center",
+      "Seguridad 24/7 y acceso controlado",
+      "Ideal para ejecutivos expatriados o diplomáticos"
+    ],
+    badgeTipo: "Renta",
+    whatsappMsg: "Hola,%20me%20interesa%20agendar%20una%20visita%20para%20el%20Departamento%20Amueblado%20cerca%20de%20Polanco%20(Piso%2021)"
+  },
+  {
+    id: "terreno-picacho-ajusco",
+    tipoOperacion: "Venta",
+    categoria: "Terreno con Construcción",
+    categoriaFiltro: "terreno",
+    titulo: "Terreno en Venta · 1,261 m²",
+    ubicacion: "Picacho Ajusco, CDMX (A 5 min sobre carretera, altura de la Marina)",
+    zona: "Sur CDMX",
+    precio: "$4,200,000 MXN",
+    precioPeriodo: "",
+    destacado: "Escritura Pública · Se aceptan créditos",
+    resumen: "Amplio terreno de 1,261 m² con construcción aproximada de 100 m² (3 recámaras, 2 baños y estancia a remodelar). Situación jurídica completamente en orden y registrada.",
+    imagen: "assets/img/propiedades/terreno-picacho-ajusco.jpg",
+    specs: [
+      { label: "Terreno", val: "1,261 m²" },
+      { label: "Construcción", val: "100 m² aprox." },
+      { label: "Recámaras", val: "3 Rec." },
+      { label: "Baños", val: "2 Baños" }
+    ],
+    puntosClave: [
+      "Escritura pública inscrita en el Registro Público de la Propiedad",
+      "Se aceptan créditos: Infonavit, Fovissste, Bancario y Recursos Propios",
+      "A 5 minutos sobre carretera Picacho Ajusco a la altura de la Marina"
+    ],
+    badgeTipo: "Venta",
+    whatsappMsg: "Hola,%20me%20gustaría%20solicitar%20información%20y%20citas%20para%20el%20Terreno%20en%20Venta%20en%20Picacho%20Ajusco"
+  }
+];
+
 const PUBLICACIONES_FACEBOOK = [
   {
     tipo: "Asesoría & Confianza",

@@ -355,12 +355,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------------- Filter Chips active state toggle on Propiedades.html ---------------- */
   const filterChips = document.querySelectorAll('.filter-chip');
+  const catalogoCards = document.querySelectorAll('#catalogo-grid .property-apple-card');
+
   filterChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      filterChips.forEach(c => c.style.borderColor = '');
+      filterChips.forEach(c => {
+        c.style.borderColor = '';
+        c.style.color = '';
+        c.style.backgroundColor = '';
+      });
       chip.style.borderColor = 'var(--orange)';
       chip.style.color = 'var(--orange)';
       chip.style.backgroundColor = 'var(--orange-subtle)';
+
+      const filterText = chip.textContent.trim().toLowerCase();
+      catalogoCards.forEach(card => {
+        const categories = (card.dataset.category || '').toLowerCase();
+        if (filterText === 'todas' || categories.includes(filterText)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     });
   });
 

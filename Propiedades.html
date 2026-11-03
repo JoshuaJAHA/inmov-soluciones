@@ -51,17 +51,151 @@
     </div>
   </section>
 
-  <!-- ================= ESTADO VACÍO / CATÁLOGO ================= -->
-  <section style="padding-top: 1rem;">
+  <!-- ================= CATÁLOGO DE PROPIEDADES (ESTILO APPLE SHOWCASE) ================= -->
+  <section style="padding-top: 1rem; padding-bottom: 5rem;">
     <div class="container">
-      <div class="empty-state reveal">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5h14V10"/><path d="M10 19.5v-6h4v6"/>
-        </svg>
-        <h3>Actualizando catálogo de propiedades</h3>
-        <p>Estamos incorporando nuevos inmuebles con documentación verificada. Si buscas una propiedad con características específicas ahora mismo, contáctanos y te compartimos las alternativas disponibles al instante.</p>
-        <a href="https://wa.me/525635919360" target="_blank" rel="noopener" class="btn btn-primary">
-          Preguntar por opciones en WhatsApp
+      <div class="propiedades-grid" id="catalogo-grid">
+        <!-- Render dinámico o estático para Apple Performance -->
+        <!-- Propiedad 1 -->
+        <article class="property-apple-card reveal" data-category="comercial venta">
+          <div class="property-media-wrap">
+            <img src="assets/img/propiedades/edificio-roma-norte.jpg" alt="Edificio en Venta en Querétaro 34, Roma Norte" loading="lazy" />
+            <div class="property-badges">
+              <span class="badge-op badge-venta">Venta</span>
+              <span class="badge-cat">Edificio Comercial</span>
+            </div>
+          </div>
+          <div class="property-body">
+            <div class="property-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.4A7 7 0 0 1 12 2.6a7 7 0 0 1 7 6.9C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.4" r="2.3"/></svg>
+              <span>Querétaro 34, Roma Norte, CDMX</span>
+            </div>
+            <h4>Edificio en Venta · 7 Pisos</h4>
+            <p class="property-desc">Ideal para remodelar o convertir en departamentos, corporativo u hotel boutique. Gran plusvalía comercial en el corazón de la Roma Norte.</p>
+            
+            <div class="property-specs-grid">
+              <div class="spec-item">
+                <span class="spec-label">Construcción</span>
+                <span class="spec-val">2,700 m²</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Terreno</span>
+                <span class="spec-val">370 m²</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Niveles</span>
+                <span class="spec-val">7 Pisos</span>
+              </div>
+            </div>
+
+            <div class="property-footer">
+              <div class="property-price-box">
+                <span class="price-prefix">Precio de venta</span>
+                <strong class="price-amount">$85,000,000 <span class="currency">MXN</span></strong>
+              </div>
+              <a href="https://wa.me/525635919360?text=Hola,%20me%20interesa%20información%20del%20Edificio%20en%20Venta%20en%20Querétaro%2034,%20Roma%20Norte" target="_blank" rel="noopener" class="btn btn-primary property-btn">
+                Contactar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Propiedad 2 -->
+        <article class="property-apple-card reveal" data-category="departamento renta">
+          <div class="property-media-wrap">
+            <img src="assets/img/propiedades/depa-amueblado-polanco.jpg" alt="Departamento Amueblado cerca de Polanco" loading="lazy" />
+            <div class="property-badges">
+              <span class="badge-op badge-renta">Renta</span>
+              <span class="badge-cat">Lujo Amueblado</span>
+            </div>
+          </div>
+          <div class="property-body">
+            <div class="property-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.4A7 7 0 0 1 12 2.6a7 7 0 0 1 7 6.9C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.4" r="2.3"/></svg>
+              <span>Cerca de Polanco, CDMX</span>
+            </div>
+            <h4>Departamento Amueblado · Piso 21</h4>
+            <p class="property-desc">Vive con lujo y confort en el Piso 21. Alberca, gimnasio, ludoteca, business center y seguridad 24/7 en una zona inmejorable.</p>
+            
+            <div class="property-specs-grid">
+              <div class="spec-item">
+                <span class="spec-label">Construcción</span>
+                <span class="spec-val">120 m²</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Recámaras</span>
+                <span class="spec-val">2 Rec.</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Baños</span>
+                <span class="spec-val">2.5 Baños</span>
+              </div>
+            </div>
+
+            <div class="property-footer">
+              <div class="property-price-box">
+                <span class="price-prefix">Renta mensual (Mantenimiento inc.)</span>
+                <strong class="price-amount">$80,000 <span class="currency">MXN/mes</span></strong>
+              </div>
+              <a href="https://wa.me/525635919360?text=Hola,%20me%20interesa%20agendar%20una%20visita%20para%20el%20Departamento%20Amueblado%20cerca%20de%20Polanco%20(Piso%2021)" target="_blank" rel="noopener" class="btn btn-primary property-btn">
+                Contactar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Propiedad 3 -->
+        <article class="property-apple-card reveal" data-category="terreno venta">
+          <div class="property-media-wrap">
+            <img src="assets/img/propiedades/terreno-picacho-ajusco.jpg" alt="Terreno en Venta en Picacho Ajusco" loading="lazy" />
+            <div class="property-badges">
+              <span class="badge-op badge-venta">Venta</span>
+              <span class="badge-cat">Terreno con Casa</span>
+            </div>
+          </div>
+          <div class="property-body">
+            <div class="property-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.4A7 7 0 0 1 12 2.6a7 7 0 0 1 7 6.9C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.4" r="2.3"/></svg>
+              <span>Picacho Ajusco, CDMX (A 5 min sobre carretera)</span>
+            </div>
+            <h4>Terreno en Venta · 1,261 m²</h4>
+            <p class="property-desc">Terreno con construcción de 100 m² (3 rec, 2 baños). Escritura pública registrada, se aceptan todos los créditos bancarios, Infonavit o Fovissste.</p>
+            
+            <div class="property-specs-grid">
+              <div class="spec-item">
+                <span class="spec-label">Terreno</span>
+                <span class="spec-val">1,261 m²</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Construcción</span>
+                <span class="spec-val">100 m²</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Recámaras</span>
+                <span class="spec-val">3 Rec.</span>
+              </div>
+            </div>
+
+            <div class="property-footer">
+              <div class="property-price-box">
+                <span class="price-prefix">Precio de venta</span>
+                <strong class="price-amount">$4,200,000 <span class="currency">MXN</span></strong>
+              </div>
+              <a href="https://wa.me/525635919360?text=Hola,%20me%20gustaría%20solicitar%20información%20y%20citas%20para%20el%20Terreno%20en%20Venta%20en%20Picacho%20Ajusco" target="_blank" rel="noopener" class="btn btn-primary property-btn">
+                Contactar
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="propiedades-bottom-banner reveal" style="margin-top: 3.5rem;">
+        <div>
+          <h4>¿Buscas algo diferente o quieres comercializar tu propiedad?</h4>
+          <p>Contáctanos hoy mismo para buscar alternativas a tu medida o solicitar el avalúo de tu inmueble.</p>
+        </div>
+        <a href="https://wa.me/525635919360?text=Hola,%20deseo%20asesoría%20personalizada%20con%20un%20asesor%20de%20INMOV%20Soluciones" target="_blank" rel="noopener" class="btn btn-primary">
+          Escribir por WhatsApp
         </a>
       </div>
     </div>
