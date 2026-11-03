@@ -7,23 +7,16 @@
 <meta name="description" content="Explora las propiedades disponibles con INMOV Soluciones en Ciudad de México.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Ambient Fluid Light Orbs -->
-  <div class="ambient-glows" aria-hidden="true">
-    <div class="glow-orb glow-orb-orange-1"></div>
-    <div class="glow-orb glow-orb-blue-1"></div>
-    <div class="glow-orb glow-orb-orange-2"></div>
-    <div class="glow-orb glow-orb-blue-2"></div>
-  </div>
-
-  <!-- ================= HEADER ================= -->
+  <!-- ================= HEADER (APPLE FROSTED CHROME) ================= -->
   <header class="site-header">
     <a href="index.html" class="brand">
       <img src="assets/img/logo.png" alt="INMOV Soluciones" class="brand-logo">
-      <span class="brand-text">INMOV <em>SOLUCIONES</em></span>
+      <span class="brand-text">INMOV<em>SOLUCIONES</em></span>
     </a>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
       <span></span>
@@ -41,57 +34,36 @@
   <!-- ================= PAGE HERO ================= -->
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">Catálogo</span>
+      <span class="eyebrow">Catálogo Inmobiliario</span>
       <h1>Propiedades disponibles</h1>
-      <p>Esta sección está lista para recibir el catálogo real de propiedades. Por ahora puedes usar los filtros de referencia de abajo como guía de cómo se verán, y escribirnos directamente para conocer las opciones vigentes.</p>
+      <p>Explora nuestras opciones residenciales y comerciales en la Ciudad de México. Puedes filtrar por categoría o escribirnos directamente para asesorarte de inmediato con opciones exclusivas.</p>
 
-      <!-- Filtros de referencia (aún no funcionales — activar cuando haya
-           propiedades reales que filtrar) -->
-      <div class="filters" aria-hidden="true">
-        <span class="filter-chip">Tipo: Casa</span>
-        <span class="filter-chip">Tipo: Departamento</span>
-        <span class="filter-chip">Tipo: Terreno</span>
-        <span class="filter-chip">Operación: Venta</span>
-        <span class="filter-chip">Operación: Renta</span>
-        <span class="filter-chip">Zona</span>
+      <!-- Filtros estilo Apple Segmented Chips -->
+      <div class="filters" role="group" aria-label="Filtros de propiedad">
+        <button class="filter-chip" type="button">Todas</button>
+        <button class="filter-chip" type="button">Casas</button>
+        <button class="filter-chip" type="button">Departamentos</button>
+        <button class="filter-chip" type="button">Terrenos</button>
+        <button class="filter-chip" type="button">Venta</button>
+        <button class="filter-chip" type="button">Renta</button>
+        <button class="filter-chip" type="button">Sur CDMX</button>
       </div>
     </div>
   </section>
 
   <!-- ================= ESTADO VACÍO / CATÁLOGO ================= -->
-  <section>
+  <section style="padding-top: 1rem;">
     <div class="container">
-
       <div class="empty-state reveal">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5h14V10"/><path d="M10 19.5v-6h4v6"/>
         </svg>
-        <h3>Muy pronto, nuevas propiedades</h3>
-        <p>Estamos actualizando el catálogo. Si buscas algo específico ahora mismo, contáctanos y te compartimos las opciones disponibles al instante.</p>
-        <a href="https://wa.me/525635919360" target="_blank" rel="noopener" class="btn btn-primary">Preguntar por WhatsApp</a>
+        <h3>Actualizando catálogo de propiedades</h3>
+        <p>Estamos incorporando nuevos inmuebles con documentación verificada. Si buscas una propiedad con características específicas ahora mismo, contáctanos y te compartimos las alternativas disponibles al instante.</p>
+        <a href="https://wa.me/525635919360" target="_blank" rel="noopener" class="btn btn-primary">
+          Preguntar por opciones en WhatsApp
+        </a>
       </div>
-
-      <!--
-        ============================================================
-        CÓMO AGREGAR UNA PROPIEDAD REAL (bórralo cuando ya lo uses)
-        ============================================================
-        1) Quita o comenta el bloque .empty-state de arriba.
-        2) Copia este bloque <article> por cada propiedad, dentro de
-           un contenedor <div class="property-grid-placeholder">.
-        3) Sustituye la imagen, el título, la ubicación, el precio y
-           el enlace de WhatsApp/detalle.
-
-        <div class="property-grid-placeholder">
-          <article class="skeleton-card">
-            <div class="skeleton-photo" style="background-image:url('RUTA_DE_LA_FOTO.jpg'); background-size:cover;"></div>
-            <div class="skeleton-lines">
-              <h4 style="margin:0 0 .3rem;">Casa en Lomas de Padierna</h4>
-              <p style="margin:0; color:var(--ink-soft); font-size:.9rem;">3 recámaras · 2 baños · $0,000,000 MXN</p>
-            </div>
-          </article>
-        </div>
-      -->
-
     </div>
   </section>
 
@@ -99,12 +71,13 @@
   <footer class="site-footer">
     <div class="container footer-row">
       <span>© <span data-year>2026</span> INMOV Soluciones. Todos los derechos reservados.</span>
-      <a href="https://www.facebook.com/inmovsoluciones" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.facebook.com/inmovsoluciones" target="_blank" rel="noopener">Facebook oficial</a>
     </div>
   </footer>
 
+  <!-- ================= BACK TO TOP ================= -->
   <button class="back-to-top" aria-label="Volver arriba">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
   <script src="js/data.js"></script>
