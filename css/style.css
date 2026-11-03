@@ -867,6 +867,167 @@ nav.primary-nav a:not(.btn):hover::after {
 }
 
 /* ==========================================================================
+   EN MEDIOS / THEATER SHOWCASE (APPLE GLASS VIDEO ENCLOSURES)
+   ========================================================================== */
+
+.medios-section {
+  background-color: var(--bg-canvas);
+  padding: clamp(4.5rem, 8vw, 6.5rem) 0;
+  border-top: 1px solid var(--line-subtle);
+}
+
+.medios-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.8rem;
+}
+
+.medios-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.medios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .medios-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.video-theater-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-fast) var(--ease-apple),
+              box-shadow var(--duration-normal) var(--ease-apple),
+              border-color var(--duration-fast) var(--ease-apple);
+}
+
+.video-theater-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(12, 62, 86, 0.22);
+}
+
+.theater-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: rgba(245, 245, 247, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+
+.theater-source-pill {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  padding: 0.25rem 0.85rem;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.video-time-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  background: var(--orange);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 6px rgba(242, 101, 34, 0.35);
+}
+
+.theater-body {
+  padding: 1.2rem;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.tweet-embed-container {
+  width: 100%;
+  max-width: 550px;
+  display: flex;
+  justify-content: center;
+}
+
+.tweet-embed-container .twitter-tweet {
+  margin: 0 auto !important;
+}
+
+.theater-caption {
+  padding: 1.6rem 1.8rem 1.8rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--line-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.theater-caption-tag {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: rgba(12, 62, 86, 0.08);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.theater-caption h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.theater-caption p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+/* ==========================================================================
    FACEBOOK LIVE SHOWCASE (APPLE HARDWARE-INSPIRED ENCLOSURE)
    ========================================================================== */
 
