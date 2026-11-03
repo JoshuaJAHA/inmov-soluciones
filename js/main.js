@@ -370,8 +370,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const filterText = chip.textContent.trim().toLowerCase();
       catalogoCards.forEach(card => {
-        const categories = (card.dataset.category || '').toLowerCase();
-        if (filterText === 'todas' || categories.includes(filterText)) {
+        const categories = (card.dataset.category || '').toLowerCase().split(' ');
+        if (filterText === 'todas') {
+          card.style.display = 'flex';
+        } else if (filterText === 'departamentos' && (categories.includes('departamentos') || categories.includes('departamento'))) {
+          card.style.display = 'flex';
+        } else if (filterText === 'terrenos' && (categories.includes('terrenos') || categories.includes('terreno'))) {
+          card.style.display = 'flex';
+        } else if (categories.includes(filterText) || (card.dataset.category || '').toLowerCase().includes(filterText)) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
