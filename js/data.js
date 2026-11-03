@@ -1,9 +1,54 @@
 /* ==========================================================================
-   Datos de testimonios — INMOV Soluciones
-   Fuente: reseñas públicas de la página de Facebook de la empresa.
-   Para agregar/editar una reseña, solo modifica este arreglo:
-   { nombre, fecha, texto }
+   Datos de publicaciones y testimonios — INMOV Soluciones
+   Fuente: página oficial de Facebook de la empresa (inmovsoluciones).
    ========================================================================== */
+
+const PUBLICACIONES_FACEBOOK = [
+  {
+    tipo: "Asesoría & Confianza",
+    tag: "Servicio 360°",
+    fecha: "Reciente",
+    titulo: "Tu patrimonio en las mejores manos con asesoría legal y notarial",
+    texto: "Acompañamos cada etapa de tu operación inmobiliaria. Revisión de escrituras, contratos claros y coordinación con notaría para que compres o vendas con total certeza jurídica.",
+    imagen: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+    link: "https://www.facebook.com/inmovsoluciones/?locale=es_LA",
+    likes: 24,
+    comentarios: 6
+  },
+  {
+    tipo: "Venta Inmobiliaria",
+    tag: "Oportunidad",
+    fecha: "Reciente",
+    titulo: "Estrategia integral para vender tu propiedad al mejor valor",
+    texto: "¿Buscas vender tu casa o departamento en el sur de la CDMX? Hacemos un avalúo comercial preciso, difusión profesional y te acompañamos hasta la firma de escrituras.",
+    imagen: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    link: "https://www.facebook.com/inmovsoluciones/?locale=es_LA",
+    likes: 38,
+    comentarios: 9
+  },
+  {
+    tipo: "Rentas Seguras",
+    tag: "Gestión Integral",
+    fecha: "Reciente",
+    titulo: "Rentas protegidas: investigación de perfiles y contratos equilibrados",
+    texto: "Colocamos tu inmueble con inquilinos investigados, pólizas jurídicas y administración continua para que recibas tu renta con puntualidad y tranquilidad.",
+    imagen: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    link: "https://www.facebook.com/inmovsoluciones/?locale=es_LA",
+    likes: 19,
+    comentarios: 4
+  },
+  {
+    tipo: "Trámites y Gestoría",
+    tag: "Acompañamiento",
+    fecha: "Reciente",
+    titulo: "Gestoría inmobiliaria sin complicaciones en Ciudad de México",
+    texto: "Desde avalúos hasta certificados de libertad de gravamen y liberación de hipotecas. Evita trámites engorrosos y pérdidas de tiempo con nuestro equipo especializado.",
+    imagen: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    link: "https://www.facebook.com/inmovsoluciones/?locale=es_LA",
+    likes: 31,
+    comentarios: 8
+  }
+];
 
 const TESTIMONIOS = [
   {

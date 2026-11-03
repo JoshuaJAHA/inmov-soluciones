@@ -105,24 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     statNums.forEach(el => statIo.observe(el));
   }
 
-  /* ---------------- Apple Fluid Testimonials Carousel ---------------- */
-  const carousel = document.querySelector('.carousel');
-  const track = document.querySelector('.carousel-track');
-
-  if (track && typeof TESTIMONIOS !== 'undefined') {
-    // Populate cards
-    track.innerHTML = TESTIMONIOS.map(t => `
-      <div class="testimonio-card">
-        <div class="testimonio-inner">
-          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-          <p class="quote">“${t.texto}”</p>
-          <div class="testimonio-meta">
-            <span>${t.nombre}</span>
-            <span>${t.fecha}</span>
-          </div>
-        </div>
-      </div>
-    `).join('');
+  /* ---------------- Reusable Apple Fluid Carousel Controller ---------------- */
+  function setupAppleCarousel({ carouselEl, trackEl, prevBtn, nextBtn, itemCount, autoplayInterval = 5500 }) {
+    if (!carouselEl || !trackEl || !itemCount) return;
 
     let currentIndex = 0;
     let isDragging = false;
@@ -130,21 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentX = 0;
     let startTranslate = 0;
     let currentTranslate = 0;
-    let animationId = null;
     let lastPos = 0;
     let lastTime = 0;
     let velocity = 0;
 
     const getVisibleCount = () => {
       if (window.innerWidth >= 1080) return 3;
-      if (window.innerWidth >= 760) return 2;
+      if (window.innerWidth >= 680) return 2;
       return 1;
     };
 
-    const getMaxIndex = () => Math.max(0, TESTIMONIOS.length - getVisibleCount());
+    const getMaxIndex = () => Math.max(0, itemCount - getVisibleCount());
 
     const getCardWidth = () => {
-      const firstCard = track.children[0];
+      const firstCard = trackEl.children[0];
       return firstCard ? firstCard.getBoundingClientRect().width : 0;
     };
 
@@ -152,11 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
       currentTranslate = pos;
       if (withTransition) {
         // Apple spring curve
-        track.style.transition = 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1)';
+        trackEl.style.transition = 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1)';
       } else {
-        track.style.transition = 'none';
+        trackEl.style.transition = 'none';
       }
-      track.style.transform = `translateX(${pos}px)`;
+      trackEl.style.transform = `translateX(${pos}px)`;
     };
 
     const updateToIndex = (index, withTransition = true) => {
@@ -166,9 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
       setPosition(targetPos, withTransition);
     };
 
-    /* ---------- Pointer Events (1:1 Direct Manipulation + Velocity) ---------- */
     const onPointerDown = (e) => {
-      if (e.button !== 0) return; // Only main button
+      if (e.button !== 0) return;
       isDragging = true;
       startX = e.clientX;
       currentX = e.clientX;
@@ -176,15 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
       lastTime = performance.now();
       velocity = 0;
 
-      // Interruptibility: capture current presentation value
-      const style = window.getComputedStyle(track);
+      const style = window.getComputedStyle(trackEl);
       const matrix = new DOMMatrixReadOnly(style.transform);
       startTranslate = matrix.m41;
       currentTranslate = startTranslate;
       setPosition(currentTranslate, false);
 
-      carousel.classList.add('is-dragging');
-      carousel.setPointerCapture(e.pointerId);
+      carouselEl.classList.add('is-dragging');
+      try { carouselEl.setPointerCapture(e.pointerId); } catch (_) {}
     };
 
     const onPointerMove = (e) => {
@@ -197,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let newTranslate = startTranslate + deltaX;
 
-      // Apple Rubber-banding: soft boundaries when dragged past edges
+      // Apple rubber-banding past bounds
       if (newTranslate > maxTranslate) {
         const overscroll = newTranslate - maxTranslate;
         newTranslate = maxTranslate + overscroll * 0.32;
@@ -206,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
         newTranslate = minTranslate - overscroll * 0.32;
       }
 
-      // Calculate instantaneous velocity (px/ms)
       const now = performance.now();
       const dt = now - lastTime;
       if (dt > 10) {
@@ -221,18 +202,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const onPointerUp = (e) => {
       if (!isDragging) return;
       isDragging = false;
-      carousel.classList.remove('is-dragging');
-
-      try {
-        carousel.releasePointerCapture(e.pointerId);
-      } catch (err) {}
+      carouselEl.classList.remove('is-dragging');
+      try { carouselEl.releasePointerCapture(e.pointerId); } catch (_) {}
 
       const cardWidth = getCardWidth();
       if (!cardWidth) return;
 
       const deltaX = currentX - startX;
 
-      // Momentum projection: if flicked quickly, advance slide based on velocity
       if (Math.abs(velocity) > 0.35) {
         if (velocity < 0) {
           currentIndex = Math.min(currentIndex + 1, getMaxIndex());
@@ -240,7 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
           currentIndex = Math.max(currentIndex - 1, 0);
         }
       } else if (Math.abs(deltaX) > cardWidth * 0.25) {
-        // Dragged past 25% of card width
         if (deltaX < 0) {
           currentIndex = Math.min(currentIndex + 1, getMaxIndex());
         } else {
@@ -251,18 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
       updateToIndex(currentIndex, true);
     };
 
-    carousel.addEventListener('pointerdown', onPointerDown);
-    carousel.addEventListener('pointermove', onPointerMove);
-    carousel.addEventListener('pointerup', onPointerUp);
-    carousel.addEventListener('pointercancel', onPointerUp);
+    carouselEl.addEventListener('pointerdown', onPointerDown);
+    carouselEl.addEventListener('pointermove', onPointerMove);
+    carouselEl.addEventListener('pointerup', onPointerUp);
+    carouselEl.addEventListener('pointercancel', onPointerUp);
 
-    // Controls
-    document.querySelector('.carousel-next')?.addEventListener('click', () => {
+    nextBtn?.addEventListener('click', () => {
       currentIndex = currentIndex >= getMaxIndex() ? 0 : currentIndex + 1;
       updateToIndex(currentIndex, true);
     });
 
-    document.querySelector('.carousel-prev')?.addEventListener('click', () => {
+    prevBtn?.addEventListener('click', () => {
       currentIndex = currentIndex <= 0 ? getMaxIndex() : currentIndex - 1;
       updateToIndex(currentIndex, true);
     });
@@ -271,30 +246,111 @@ document.addEventListener('DOMContentLoaded', () => {
       updateToIndex(currentIndex, false);
     });
 
-    // Gentle Auto-play (paused during user interaction & respecting reduced-motion)
+    // Gentle Auto-play
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let autoplayTimer = null;
 
     const startAutoplay = () => {
-      if (prefersReducedMotion) return;
+      if (prefersReducedMotion || !autoplayInterval) return;
       stopAutoplay();
       autoplayTimer = setInterval(() => {
         if (!isDragging) {
           currentIndex = currentIndex >= getMaxIndex() ? 0 : currentIndex + 1;
           updateToIndex(currentIndex, true);
         }
-      }, 5500);
+      }, autoplayInterval);
     };
 
     const stopAutoplay = () => {
       if (autoplayTimer) clearInterval(autoplayTimer);
     };
 
-    carousel.addEventListener('mouseenter', stopAutoplay);
-    carousel.addEventListener('mouseleave', startAutoplay);
-    carousel.addEventListener('pointerdown', stopAutoplay);
+    carouselEl.addEventListener('mouseenter', stopAutoplay);
+    carouselEl.addEventListener('mouseleave', startAutoplay);
+    carouselEl.addEventListener('pointerdown', stopAutoplay);
 
     startAutoplay();
+  }
+
+  /* ---------------- Facebook Posts Carousel Render & Setup ---------------- */
+  const fbTrack = document.querySelector('.fb-track');
+  const fbCarousel = document.getElementById('fb-carousel');
+
+  if (fbTrack && typeof PUBLICACIONES_FACEBOOK !== 'undefined' && PUBLICACIONES_FACEBOOK.length) {
+    fbTrack.innerHTML = PUBLICACIONES_FACEBOOK.map(p => `
+      <div class="fb-card">
+        <article class="fb-inner">
+          <div class="fb-media">
+            <img src="${p.imagen}" alt="${p.titulo}" loading="lazy" />
+            <span class="fb-badge">${p.tag}</span>
+          </div>
+          <div class="fb-content">
+            <div class="fb-meta-header">
+              <span class="fb-channel">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </span>
+              <span>${p.fecha}</span>
+            </div>
+            <h4>${p.titulo}</h4>
+            <p>${p.texto}</p>
+            <div class="fb-footer">
+              <div class="fb-engagement">
+                <span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                  ${p.likes}
+                </span>
+                <span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  ${p.comentarios}
+                </span>
+              </div>
+              <a href="${p.link}" target="_blank" rel="noopener" class="fb-link">
+                Ver post
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    `).join('');
+
+    setupAppleCarousel({
+      carouselEl: fbCarousel,
+      trackEl: fbTrack,
+      prevBtn: document.querySelector('.fb-prev'),
+      nextBtn: document.querySelector('.fb-next'),
+      itemCount: PUBLICACIONES_FACEBOOK.length,
+      autoplayInterval: 6000
+    });
+  }
+
+  /* ---------------- Apple Fluid Testimonials Carousel ---------------- */
+  const opinCarousel = document.getElementById('opiniones-carousel');
+  const opinTrack = opinCarousel?.querySelector('.carousel-track');
+
+  if (opinTrack && typeof TESTIMONIOS !== 'undefined') {
+    opinTrack.innerHTML = TESTIMONIOS.map(t => `
+      <div class="testimonio-card">
+        <div class="testimonio-inner">
+          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="quote">“${t.texto}”</p>
+          <div class="testimonio-meta">
+            <span>${t.nombre}</span>
+            <span>${t.fecha}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    setupAppleCarousel({
+      carouselEl: opinCarousel,
+      trackEl: opinTrack,
+      prevBtn: document.querySelector('.carousel-prev:not(.fb-prev)'),
+      nextBtn: document.querySelector('.carousel-next:not(.fb-next)'),
+      itemCount: TESTIMONIOS.length,
+      autoplayInterval: 5500
+    });
   }
 
   /* ---------------- Filter Chips active state toggle on Propiedades.html ---------------- */
