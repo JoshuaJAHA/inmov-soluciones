@@ -152,6 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const onPointerDown = (e) => {
       if (e.button !== 0) return;
+      
+      // If clicking directly on a link or inside a link, allow native click without drag capture
+      if (e.target.closest('a') || e.target.closest('button')) {
+        return;
+      }
+
       isDragging = true;
       startX = e.clientX;
       currentX = e.clientX;
