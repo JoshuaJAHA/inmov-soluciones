@@ -278,59 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoplay();
   }
 
-  /* ---------------- Facebook Posts Carousel Render & Setup ---------------- */
-  const fbTrack = document.querySelector('.fb-track');
-  const fbCarousel = document.getElementById('fb-carousel');
-
-  if (fbTrack && typeof PUBLICACIONES_FACEBOOK !== 'undefined' && PUBLICACIONES_FACEBOOK.length) {
-    fbTrack.innerHTML = PUBLICACIONES_FACEBOOK.map(p => `
-      <div class="fb-card">
-        <article class="fb-inner">
-          <div class="fb-media">
-            <img src="${p.imagen}" alt="${p.titulo}" loading="lazy" />
-            <span class="fb-badge">${p.tag}</span>
-          </div>
-          <div class="fb-content">
-            <div class="fb-meta-header">
-              <span class="fb-channel">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                Facebook
-              </span>
-              <span>${p.fecha}</span>
-            </div>
-            <h4>${p.titulo}</h4>
-            <p>${p.texto}</p>
-            <div class="fb-footer">
-              <div class="fb-engagement">
-                <span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-                  ${p.likes}
-                </span>
-                <span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  ${p.comentarios}
-                </span>
-              </div>
-              <a href="${p.link}" target="_blank" rel="noopener" class="fb-link">
-                Ver post
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    `).join('');
-
-    setupAppleCarousel({
-      carouselEl: fbCarousel,
-      trackEl: fbTrack,
-      prevBtn: document.querySelector('.fb-prev'),
-      nextBtn: document.querySelector('.fb-next'),
-      itemCount: PUBLICACIONES_FACEBOOK.length,
-      autoplayInterval: 6000
-    });
-  }
-
   /* ---------------- Apple Fluid Testimonials Carousel ---------------- */
   const opinCarousel = document.getElementById('opiniones-carousel');
   const opinTrack = opinCarousel?.querySelector('.carousel-track');
@@ -352,8 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupAppleCarousel({
       carouselEl: opinCarousel,
       trackEl: opinTrack,
-      prevBtn: document.querySelector('.carousel-prev:not(.fb-prev)'),
-      nextBtn: document.querySelector('.carousel-next:not(.fb-next)'),
+      prevBtn: document.querySelector('.carousel-prev'),
+      nextBtn: document.querySelector('.carousel-next'),
       itemCount: TESTIMONIOS.length,
       autoplayInterval: 5500
     });

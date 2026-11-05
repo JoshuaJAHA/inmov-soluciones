@@ -1348,7 +1348,7 @@ nav.primary-nav a:not(.btn):hover::after {
 }
 
 /* ==========================================================================
-   REDES SOCIALES (APPLE MULTI-CHANNEL HUB & SOCIAL CARDS)
+   REDES SOCIALES (APPLE SHOWCASE HERO HUB: FACEBOOK, INSTAGRAM, TIKTOK)
    ========================================================================== */
 
 .facebook-posts {
@@ -1359,387 +1359,277 @@ nav.primary-nav a:not(.btn):hover::after {
 }
 
 .fb-posts-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.8rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: left;
 }
 
-/* Apple Multi-Network Social Pills */
-.social-channels-pills {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.social-channel-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.65rem 1.25rem;
-  font-size: 0.86rem;
-  font-weight: 600;
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-sm);
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  color: var(--text-primary);
-  transition: all var(--duration-fast) var(--ease-apple);
-}
-
-.social-channel-btn:active {
-  transform: scale(0.95);
-}
-
-.btn-channel-fb {
-  color: #1877F2;
-  border-color: rgba(24, 119, 242, 0.22);
-}
-
-.btn-channel-fb:hover {
-  background: rgba(24, 119, 242, 0.08);
-  border-color: #1877F2;
-  transform: translateY(-2px);
-}
-
-.btn-channel-ig {
-  color: #E1306C;
-  border-color: rgba(225, 48, 108, 0.22);
-}
-
-.btn-channel-ig:hover {
-  background: rgba(225, 48, 108, 0.08);
-  border-color: #E1306C;
-  transform: translateY(-2px);
-}
-
-.btn-channel-tt {
-  color: #000000;
-  border-color: rgba(0, 0, 0, 0.18);
-}
-
-.btn-channel-tt:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: #000000;
-  transform: translateY(-2px);
-}
-
-/* Apple Fluid Carousel for Social Posts */
-.fb-carousel {
-  position: relative;
-  overflow: hidden;
-  padding: 0.8rem 0;
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.fb-carousel.is-dragging {
-  cursor: grabbing;
-}
-
-.fb-track {
-  display: flex;
-  touch-action: pan-y;
-  will-change: transform;
-}
-
-.fb-card {
-  flex: 0 0 100%;
-  padding: 0 0.75rem;
-  box-sizing: border-box;
-}
-
-@media (min-width: 680px) {
-  .fb-card { flex-basis: 50%; }
-}
-
-@media (min-width: 1080px) {
-  .fb-card { flex-basis: 33.333%; }
-}
-
-.fb-inner {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-card);
-  transition: transform var(--duration-fast) var(--ease-apple),
-              box-shadow var(--duration-normal) var(--ease-apple),
-              border-color var(--duration-fast) var(--ease-apple);
-}
-
-.fb-inner:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: rgba(12, 62, 86, 0.2);
-}
-
-.fb-media {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.fb-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.65s var(--ease-apple);
-}
-
-.fb-inner:hover .fb-media img {
-  transform: scale(1.05);
-}
-
-.fb-badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 0.35rem 0.85rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  background: rgba(12, 62, 86, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--radius-pill);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.fb-content {
-  padding: 1.6rem 1.6rem 1.8rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 0.85rem;
-}
-
-.fb-meta-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.78rem;
-  color: var(--text-tertiary);
-}
-
-.fb-channel {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-weight: 600;
-  color: #1877F2;
-}
-
-.fb-content h4 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.015em;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-.fb-content p {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--text-secondary);
-  letter-spacing: -0.005em;
-  margin: 0;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.fb-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--line-subtle);
-  margin-top: auto;
-}
-
-.fb-engagement {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.8rem;
-  color: var(--text-tertiary);
-}
-
-.fb-engagement span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.fb-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--orange);
-  transition: transform var(--duration-fast) var(--ease-apple),
-              color var(--duration-fast) var(--ease-apple);
-}
-
-.fb-link:hover {
-  color: var(--orange-hover);
-  transform: translateX(3px);
-}
-
-/* Hub Grid de Redes Sociales (Facebook, Instagram, TikTok) */
-.social-hub-grid {
+/* Apple Showcase Hero Grid */
+.social-hero-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.6rem;
-  margin-top: 3.2rem;
+  gap: 2rem;
+  align-items: stretch;
 }
 
-@media (max-width: 900px) {
-  .social-hub-grid {
+@media (max-width: 1024px) {
+  .social-hero-grid {
     grid-template-columns: 1fr;
-    gap: 1.2rem;
+    gap: 1.6rem;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-.social-hub-card {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  padding: 1.8rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  box-shadow: var(--shadow-card);
+/* Apple Hero Card Base */
+.social-hero-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
   text-decoration: none;
   color: inherit;
-  transition: transform var(--duration-fast) var(--ease-apple),
-              box-shadow var(--duration-normal) var(--ease-apple),
-              border-color var(--duration-fast) var(--ease-apple);
+  overflow: hidden;
+  box-shadow: 0 4px 20px -2px rgba(12, 62, 86, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
 }
 
-.social-hub-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+.social-hero-card:hover {
+  transform: translateY(-8px);
 }
 
-.hub-fb:hover {
-  border-color: rgba(24, 119, 242, 0.4);
+.social-hero-card:active {
+  transform: scale(0.985);
 }
 
-.hub-ig:hover {
-  border-color: rgba(225, 48, 108, 0.4);
+/* Platform-specific ambient glow on hover */
+.card-fb:hover {
+  border-color: rgba(24, 119, 242, 0.35);
+  box-shadow: 0 24px 48px -12px rgba(24, 119, 242, 0.22), 0 8px 18px -4px rgba(12, 62, 86, 0.06);
 }
 
-.hub-tt:hover {
-  border-color: rgba(0, 0, 0, 0.4);
+.card-ig:hover {
+  border-color: rgba(225, 48, 108, 0.35);
+  box-shadow: 0 24px 48px -12px rgba(225, 48, 108, 0.22), 0 8px 18px -4px rgba(12, 62, 86, 0.06);
 }
 
-.hub-icon-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-squircle);
+.card-tt:hover {
+  border-color: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.22), 0 8px 18px -4px rgba(12, 62, 86, 0.06);
+}
+
+/* Card Internal Layout */
+.social-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2.6rem 2.2rem 2.2rem;
+  box-sizing: border-box;
+}
+
+/* Top Header Bar */
+.social-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+/* Brand Icon Squircle (Apple Hardware Spec) */
+.social-brand-icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--duration-fast) var(--ease-apple);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.social-hub-card:hover .hub-icon-wrap {
-  transform: scale(1.08) rotate(-2deg);
+.social-hero-card:hover .social-brand-icon {
+  transform: scale(1.08) rotate(-3deg);
 }
 
-.hub-fb .hub-icon-wrap {
-  background: rgba(24, 119, 242, 0.1);
+.fb-icon {
+  background: linear-gradient(135deg, rgba(24, 119, 242, 0.12), rgba(24, 119, 242, 0.04));
   color: #1877F2;
+  border: 1px solid rgba(24, 119, 242, 0.18);
 }
 
-.hub-ig .hub-icon-wrap {
-  background: linear-gradient(135deg, rgba(225, 48, 108, 0.12), rgba(253, 29, 29, 0.12));
+.ig-icon {
+  background: linear-gradient(135deg, rgba(225, 48, 108, 0.12), rgba(253, 29, 29, 0.08), rgba(255, 220, 128, 0.12));
   color: #E1306C;
+  border: 1px solid rgba(225, 48, 108, 0.18);
 }
 
-.hub-tt .hub-icon-wrap {
-  background: rgba(0, 0, 0, 0.08);
+.tt-icon {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.03));
   color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.hub-info {
+/* Card Meta (Right side of header) */
+.social-card-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  flex: 1;
+  align-items: flex-end;
+  gap: 0.4rem;
+  text-align: right;
 }
 
-.hub-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.hub-network {
-  font-size: 0.72rem;
+.social-platform-label {
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   color: var(--text-tertiary);
 }
 
-.hub-pill {
-  font-size: 0.7rem;
+.social-metric-pill {
+  font-size: 0.76rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-pill);
   background: var(--bg-surface);
   border: 1px solid var(--line);
   color: var(--navy);
+  letter-spacing: -0.01em;
 }
 
-.hub-info h4 {
-  font-size: 1.15rem;
+/* Card Typography & Body */
+.social-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.social-card-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.social-card-subtitle {
+  font-size: 0.94rem;
   font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-  letter-spacing: -0.015em;
+  color: var(--orange);
+  margin: 0 0 1.1rem;
+  letter-spacing: -0.01em;
 }
 
-.hub-info p {
-  font-size: 0.88rem;
-  line-height: 1.5;
+.social-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.62;
   color: var(--text-secondary);
-  margin: 0;
+  margin: 0 0 1.6rem;
   letter-spacing: -0.005em;
 }
 
-.hub-arrow {
-  font-size: 1.25rem;
-  color: var(--text-tertiary);
-  transition: transform var(--duration-fast) var(--ease-apple),
-              color var(--duration-fast) var(--ease-apple);
+/* Highlight Tags */
+.social-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  margin-bottom: 2rem;
 }
 
-.social-hub-card:hover .hub-arrow {
-  transform: translateX(4px);
+.social-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 550;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9px;
+  background: #F4F6F8;
+  color: var(--navy);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.social-tag svg {
   color: var(--orange);
+  flex-shrink: 0;
+}
+
+/* Bottom Action Button (Apple Pill CTA) */
+.social-card-footer {
+  margin-top: auto;
+}
+
+.social-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.95rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.action-arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-hero-card:hover .action-arrow {
+  transform: translateX(5px);
+}
+
+/* Facebook Button Variants */
+.btn-fb {
+  background: rgba(24, 119, 242, 0.08);
+  color: #1877F2;
+  border: 1px solid rgba(24, 119, 242, 0.22);
+}
+
+.card-fb:hover .btn-fb {
+  background: #1877F2;
+  color: #FFFFFF;
+  border-color: #1877F2;
+  box-shadow: 0 8px 18px rgba(24, 119, 242, 0.35);
+}
+
+/* Instagram Button Variants */
+.btn-ig {
+  background: linear-gradient(135deg, rgba(225, 48, 108, 0.08), rgba(253, 29, 29, 0.06));
+  color: #C13584;
+  border: 1px solid rgba(225, 48, 108, 0.22);
+}
+
+.card-ig:hover .btn-ig {
+  background: linear-gradient(135deg, #833AB4, #FD1D1D, #F56040);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 8px 18px rgba(225, 48, 108, 0.35);
+}
+
+/* TikTok Button Variants */
+.btn-tt {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111111;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.card-tt:hover .btn-tt {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
 }
 
 /* Footer social links */
