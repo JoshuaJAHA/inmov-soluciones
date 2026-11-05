@@ -705,12 +705,14 @@ nav.primary-nav a:not(.btn):hover::after {
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
-  padding: 2.4rem 2rem;
+  padding: 2.4rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-card);
   user-select: none;
   -webkit-user-select: none;
+  cursor: pointer;
+  position: relative;
   will-change: transform;
   transition: transform var(--duration-normal) var(--ease-apple),
               box-shadow var(--duration-normal) var(--ease-apple),
@@ -718,15 +720,46 @@ nav.primary-nav a:not(.btn):hover::after {
 }
 
 .servicio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -10px rgba(12, 62, 86, 0.12), 0 0 0 1px rgba(242, 101, 34, 0.35);
   border-color: var(--orange-border);
+}
+
+.servicio-card:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
 }
 
 /* Instant response on pointerdown */
 .servicio-card:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
   transition: transform 100ms ease-out;
+}
+
+.servicio-cta-pill {
+  margin-top: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: -0.01em;
+  transition: transform var(--duration-fast) var(--ease-apple),
+              color var(--duration-fast) var(--ease-apple);
+}
+
+.servicio-card:hover .servicio-cta-pill {
+  transform: translateX(4px);
+  color: var(--orange-hover);
+}
+
+.servicio-cta-pill svg {
+  transition: transform var(--duration-fast) var(--ease-apple);
+}
+
+.servicio-card:hover .servicio-cta-pill svg {
+  transform: translateX(3px);
 }
 
 /* Apple Squircle Icon Container */
@@ -2041,6 +2074,345 @@ footer.site-footer {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   APPLE SERVICE DETAIL MODAL (LIQUID GLASS / SHEET OVERLAY)
+   ========================================================================== */
+
+.apple-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(12, 62, 86, 0.45);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-apple),
+              visibility 0.35s var(--ease-apple);
+}
+
+.apple-modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Apple Dialog Sheet */
+.apple-modal-sheet {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-hero);
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 35px 80px -15px rgba(12, 62, 86, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.5);
+  transform: scale(0.92) translateY(24px);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.35s var(--ease-apple);
+}
+
+.apple-modal-overlay.is-active .apple-modal-sheet {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* macOS / iOS Window Header Bar */
+.modal-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.4rem;
+  background: rgba(245, 245, 247, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.modal-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.modal-badge-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: rgba(12, 62, 86, 0.08);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.modal-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #FFFFFF;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-apple),
+              background var(--duration-fast) var(--ease-apple),
+              color var(--duration-fast) var(--ease-apple);
+}
+
+.modal-close-btn:hover {
+  background: var(--orange-subtle);
+  border-color: var(--orange-border);
+  color: var(--orange);
+  transform: scale(1.05);
+}
+
+.modal-close-btn:active {
+  transform: scale(0.92);
+}
+
+/* Scrollable Container */
+.modal-scroll-body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Hero Image */
+.modal-hero-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background-color: var(--navy);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.modal-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 62, 86, 0.2) 0%, rgba(12, 62, 86, 0.88) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem 2.2rem;
+}
+
+.modal-hero-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+  margin-bottom: 0.35rem;
+}
+
+.modal-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* Content Container */
+.modal-content-container {
+  padding: 2.2rem clamp(1.6rem, 4vw, 2.6rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.modal-lema-box {
+  background: var(--bg-surface);
+  border-left: 4px solid var(--orange);
+  border-radius: 0 var(--radius-squircle) var(--radius-squircle) 0;
+  padding: 1.1rem 1.4rem;
+}
+
+.modal-lema {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.modal-intro {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  letter-spacing: -0.008em;
+  margin: 0;
+}
+
+/* Service Detail Items */
+.modal-sections-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.modal-section-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.modal-item-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: border-color var(--duration-fast) var(--ease-apple),
+              transform var(--duration-fast) var(--ease-apple);
+}
+
+.modal-item-card:hover {
+  border-color: rgba(242, 101, 34, 0.4);
+  transform: translateX(3px);
+}
+
+.modal-item-bullet {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--orange-subtle);
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.modal-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.modal-item-text strong {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.modal-item-text span {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Conclusion Box */
+.modal-conclusion-box {
+  background: linear-gradient(135deg, rgba(12, 62, 86, 0.05) 0%, rgba(242, 101, 34, 0.08) 100%);
+  border: 1px solid rgba(12, 62, 86, 0.12);
+  border-radius: var(--radius-card);
+  padding: 1.3rem 1.6rem;
+}
+
+.modal-conclusion {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modal-conclusion strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* Actions Footer */
+.modal-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-subtle);
+  margin-top: 0.5rem;
+}
+
+.modal-action-btn {
+  padding: 0.85rem 1.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.modal-cancel-btn {
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .modal-hero-image-wrap {
+    height: 200px;
+  }
+  .modal-hero-overlay {
+    padding: 1.4rem;
+  }
+  .modal-footer-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .modal-action-btn, .modal-cancel-btn {
+    text-align: center;
+    justify-content: center;
   }
 }
 

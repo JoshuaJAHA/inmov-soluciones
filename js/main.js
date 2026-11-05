@@ -386,6 +386,108 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------------- Apple Fluid Service Detail Modal (Liquid Glass Sheet) ---------------- */
+  const serviceCards = document.querySelectorAll('.servicio-card[data-service-id]');
+  const serviceModal = document.getElementById('service-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalCancelBtn = document.getElementById('modal-cancel-btn');
+
+  const modalHeroImg = document.getElementById('modal-hero-img');
+  const modalEyebrow = document.getElementById('modal-eyebrow');
+  const modalTitle = document.getElementById('modal-title');
+  const modalLema = document.getElementById('modal-lema');
+  const modalIntro = document.getElementById('modal-intro');
+  const modalSections = document.getElementById('modal-sections');
+  const modalConclusion = document.getElementById('modal-conclusion');
+  const modalCtaBtn = document.getElementById('modal-cta-btn');
+  const modalCtaText = document.getElementById('modal-cta-text');
+
+  const openServiceModal = (serviceId) => {
+    if (typeof DETALLE_SERVICIOS === 'undefined' || !DETALLE_SERVICIOS[serviceId] || !serviceModal) return;
+    const data = DETALLE_SERVICIOS[serviceId];
+
+    if (modalHeroImg) {
+      modalHeroImg.src = data.imagen;
+      modalHeroImg.alt = data.titulo;
+    }
+    if (modalEyebrow) modalEyebrow.textContent = data.eyebrow;
+    if (modalTitle) modalTitle.textContent = data.titulo;
+    if (modalLema) modalLema.textContent = data.lema;
+    if (modalIntro) modalIntro.textContent = data.intro;
+
+    if (modalSections) {
+      modalSections.innerHTML = data.secciones.map(sec => `
+        <div class="modal-section-block">
+          <div class="modal-section-heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span>${sec.titulo}</span>
+          </div>
+          <div class="modal-items-grid">
+            ${sec.items.map(it => `
+              <div class="modal-item-card">
+                <span class="modal-item-bullet">✓</span>
+                <div class="modal-item-text">
+                  <strong>${it.nombre}</strong>
+                  <span>${it.desc}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    if (modalConclusion) modalConclusion.innerHTML = data.conclusion;
+    if (modalCtaText) modalCtaText.textContent = data.ctaTexto;
+    if (modalCtaBtn) {
+      modalCtaBtn.href = `https://wa.me/525635919360?text=${data.ctaWhatsapp}`;
+    }
+
+    serviceModal.classList.add('is-active');
+    document.body.classList.add('modal-open');
+    serviceModal.setAttribute('aria-hidden', 'false');
+
+    // Focus close button for accessibility
+    setTimeout(() => {
+      modalCloseBtn?.focus();
+    }, 100);
+  };
+
+  const closeServiceModal = () => {
+    if (!serviceModal) return;
+    serviceModal.classList.remove('is-active');
+    document.body.classList.remove('modal-open');
+    serviceModal.setAttribute('aria-hidden', 'true');
+  };
+
+  serviceCards.forEach(card => {
+    const serviceId = card.dataset.serviceId;
+    card.addEventListener('click', () => openServiceModal(serviceId));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openServiceModal(serviceId);
+      }
+    });
+  });
+
+  modalCloseBtn?.addEventListener('click', closeServiceModal);
+  modalCancelBtn?.addEventListener('click', closeServiceModal);
+
+  // Close when clicking on backdrop outside the sheet
+  serviceModal?.addEventListener('click', (e) => {
+    if (e.target === serviceModal) {
+      closeServiceModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && serviceModal?.classList.contains('is-active')) {
+      closeServiceModal();
+    }
+  });
+
   /* ---------------- Current Year in Footer ---------------- */
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
